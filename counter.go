@@ -2,6 +2,7 @@ package crdt
 
 import (
 	"fmt"
+	"github.com/satori/go.uuid"
 )
 
 type Counter struct {
@@ -12,6 +13,7 @@ type Counter struct {
 func NewCounter() *Counter {
 	return &Counter{
 		data: make(map[string]uint),
+		id: uuid.Must(uuid.NewV4()),
 	}
 }
 
