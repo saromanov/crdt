@@ -14,16 +14,16 @@ func NewPnCounter()*PnCounter {
 	}
 }
 
-func (p*PnCounter) Inc() {
-	p.pos.Inc()
+func (p*PnCounter) Inc(num uint) {
+	p.pos.Inc(num)
 }
 
 func (p*PnCounter) Dec() {
-	p.neg.Inc()
+	p.neg.Inc(1)
 }
 
 func (p*PnCounter) Value() int{
-	return p.pos.Count() - p.neg.Count()
+	return int(p.pos.Count()) - int(p.neg.Count())
 }
 
 func(p *PnCounter) Merge(n*PnCounter) {

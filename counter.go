@@ -11,9 +11,10 @@ type Counter struct {
 }
 
 func NewCounter() *Counter {
+	uuid := uuid.NewV4()
 	return &Counter{
 		data: make(map[string]uint),
-		id: uuid.Must(uuid.NewV4()),
+		id:uuid.String(),
 	}
 }
 
