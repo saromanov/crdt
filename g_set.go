@@ -11,6 +11,10 @@ func NewGSet() *GSet {
 	}
 }
 
+func (g*GSet) Data ()map[interface{}]string {
+	return g.data
+}
+
 func (g*GSet) Add(value interface{}) {
 	g.data[value] = "data"
 }
@@ -18,5 +22,13 @@ func (g*GSet) Add(value interface{}) {
 func (g*GSet) Lookup(value interface{}) bool {
 	_, ok := g.data[value]
 	return ok
+}
+
+func (g*GSet) Merge(gs*GSet) {
+	for _, d := range gs.Data() {
+		if ok := g.Lookup(d); !ok {
+			g.Add(d)
+		}
+	}
 }
 
