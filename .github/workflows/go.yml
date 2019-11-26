@@ -27,3 +27,6 @@ jobs:
       run: |
         go test -timeout 30s ./...
         go test -race ./...
+    - name: Linters
+      uses: actions-contrib/golangci-lint@master
+      args: run
