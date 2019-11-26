@@ -2,16 +2,16 @@ package set
 
 // GSet provides implementation of the G-Set
 type GSet struct {
-	data map[interface{}]string
+	data setObject
 }
 
 func NewGSet() *GSet {
 	return &GSet{
-		data: make(map[interface{}]string),
+		data: make(setObject),
 	}
 }
 
-func (g *GSet) Data() map[interface{}]string {
+func (g *GSet) Data() setObject {
 	return g.data
 }
 
