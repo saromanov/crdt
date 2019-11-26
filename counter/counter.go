@@ -1,8 +1,9 @@
-package crdt
+package set
 
 import (
 	"fmt"
-	"github.com/satori/go.uuid"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 type Counter struct {
@@ -14,7 +15,7 @@ func NewCounter() *Counter {
 	uuid := uuid.NewV4()
 	return &Counter{
 		data: make(map[string]uint),
-		id:uuid.String(),
+		id:   uuid.String(),
 	}
 }
 
@@ -36,7 +37,7 @@ func (g *Counter) Count() uint {
 }
 
 // Merge provides merging of two counters
-func (g *Counter) Merge(c *Counter){
+func (g *Counter) Merge(c *Counter) {
 	for ident, val := range c.data {
 		if v, ok := g.data[ident]; !ok || v < val {
 			g.data[ident] = val
