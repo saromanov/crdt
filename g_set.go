@@ -32,3 +32,7 @@ func (g*GSet) Merge(gs*GSet) {
 	}
 }
 
+func (g*GSet) Len()int {
+	return len(g.data)
+}
+
