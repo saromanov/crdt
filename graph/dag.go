@@ -44,5 +44,6 @@ func (d *DAG) AddEdge(a, b interface{}) error {
 	}
 
 	d.edges[a] = append(d.edges[a], b)
+	d.edges[b] = append(d.edges[b], a)
 	return nil
 }
