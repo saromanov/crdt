@@ -12,3 +12,26 @@ func NewDAG() *DAG {
 		edges:    make(map[interface{}][]interface{}),
 	}
 }
+
+func (d *DAG) LookupVertex(v interface{}) bool {
+	if _, ok := d.edges[v]; ok {
+		return true
+	}
+
+	return false
+}
+
+func (d *DAG) LookupEdge(a, b interface{}) bool {
+	verts, ok := d.edges[a]
+	if !ok {
+		return false
+	}
+
+	for _, v := range verts {
+		if v == b {
+			return true
+		}
+	}
+
+	return false
+}
