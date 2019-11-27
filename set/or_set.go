@@ -43,3 +43,21 @@ func (o *ORSet) Remove(value interface{}) {
 
 	o.removed[value] = r
 }
+
+func (o *ORSet) Contains(value interface{}) bool {
+	if _, ok := o.add[value]; !ok {
+		return false
+	}
+
+	if _, ok := o.removed[value]; !ok {
+		return false
+	}
+
+	for uid := range o.add {
+		if _, ok := o.removed[uid]; !ok {
+			return true
+		}
+	}
+
+	return false
+}
