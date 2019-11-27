@@ -36,7 +36,7 @@ func (o *ORSet) Remove(value interface{}) {
 	}
 
 	if m, ok := o.add[value]; ok {
-		for uid, _ := range m {
+		for uid := range m {
 			r[uid] = struct{}{}
 		}
 	}

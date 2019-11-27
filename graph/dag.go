@@ -1,5 +1,7 @@
 package graph
 
+import "fmt"
+
 // DAG provides implementation of add only graph
 type DAG struct {
 	vertices []interface{}
@@ -34,4 +36,13 @@ func (d *DAG) LookupEdge(a, b interface{}) bool {
 	}
 
 	return false
+}
+
+func (d *DAG) AddEdge(a, b interface{}) error {
+	if ok := d.LookupVertex(a); ok {
+		return fmt.Errorf("vertex is exist")
+	}
+
+	d.edges[a] = append(d.edges[a], b)
+	return nil
 }
